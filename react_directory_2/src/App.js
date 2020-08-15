@@ -17,15 +17,36 @@ class App extends Component {
                 this.setState({employeeList: response.data.results})      
         })
     }
-    
+
+    handleInputChange = event => {
+        this.setState({ search: event.target.value });
+      };
+
+      handleFormSubmit = event => {
+        event.preventDefault();
+        API.search(this.state.search)
+          .then(res => {
+            if (res.data.status === "error") {
+              throw new Error(res.data.message);
+            }
+            this.setState({ results: res.data.message, error: "" });
+          })
+          .catch(err => this.setState({ error: err.message }));
+      };
+
 
   render () {
     return (
         <>
+        <TextBox
+         handleInputChange={this.handleInputChange}
+         employeeList={this.state.employeeList}
+         handleFormSubmit={this.handleFormSubmit}
 
-        {console.log("here",this.state.employeeList)}
-        <TextBox/>
-        <Table employeeList={this.state.employeeList}/>
+         />
+        <Table 
+        employeeList={this.state.employeeList}
+        />
         
         </>
     )

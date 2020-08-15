@@ -19,7 +19,7 @@ const TableView = (props) => {
         {props.employeeList.length > 0 ? props.employeeList.map((employee, ID) => {
           return (<tr>
             <th scope="row">{ID+1}</th>
-          <td> <img src =  {employee.picture.thumbnail} /> </td>
+          <td> <img alt="thumbnail" src =  {employee.picture.thumbnail} /> </td>
           <td>{employee.name.first}</td>
           <td>{employee.name.last}</td>
           <td>{employee.phone}</td>
