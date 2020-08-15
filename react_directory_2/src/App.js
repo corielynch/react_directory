@@ -34,6 +34,18 @@ class App extends Component {
           .catch(err => this.setState({ error: err.message }));
       };
 
+       SearchResults(props) {
+        return (
+          <ul className="list-group search-results">
+            {props.results.map(result => (
+              <li key={result} className="list-group-item">
+                <img alt="Dog" src={result} className="img-fluid" />
+              </li>
+            ))}
+          </ul>
+        );
+      }
+
 
   render () {
     return (
@@ -43,9 +55,12 @@ class App extends Component {
          employeeList={this.state.employeeList}
          handleFormSubmit={this.handleFormSubmit}
 
+
          />
         <Table 
         employeeList={this.state.employeeList}
+        SearchResults={this.SearchResults}
+
         />
         
         </>
