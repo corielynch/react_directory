@@ -1,24 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
+import Table from "./components/Table"
+import TextBox from "./components/Input"
+import API from "./utils/API"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  
+    state = {
+        employeeList: [], 
+        search: ""
+    }
+
+    componentDidMount () {
+        API.search().then(response => {
+            console.log(response.data.results)
+                this.setState({employeeList: response.data.results})      
+        })
+    }
+    
+
+  render () {
+    return (
+        <>
+
+        {console.log("here",this.state.employeeList)}
+        <TextBox/>
+        <Table employeeList={this.state.employeeList}/>
+        
+        </>
+    )
+  }
+   
 }
 
 export default App;
