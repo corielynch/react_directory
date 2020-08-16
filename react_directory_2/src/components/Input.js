@@ -14,7 +14,7 @@ function TextBox(props) {
           list="employees"
           type="text"
           className="form-control"
-          placeholder="Search an Employee by Name"
+          placeholder="Search an Employee by First or Last Name"
           id="employee" />
         <datalist id="emloyees">
           {props.employeeList.map(employeeList => (
