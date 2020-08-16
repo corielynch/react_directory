@@ -1,1 +1,23 @@
+body {
+    background-color: lavender;
+    color:black;
+}
 
+.form-control {
+    width: 35%;
+    float: left;
+}
+
+h1 {
+    text-align: center;
+    text-shadow: darkgoldenrod;
+    padding-bottom: 45px;
+}
+
+.btn-success {
+    background-color: black;
+}
+
+.search {
+    padding-bottom: 30px;
+}
