@@ -23,8 +23,8 @@ function TextBox(props) {
           placeholder="Search an Employee by First or Last Name"
           id="employee" />
         <datalist id="emloyees">
-          {props.employeeList.map(employeeList => (
-            <option value={employeeList} key={employeeList} />
+          {props.employeeList.map((employeeList, index) => (
+            <option value={employeeList} key={index} />
           ))}
         </datalist>
         <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">

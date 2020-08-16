@@ -29,15 +29,30 @@ class App extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     const filteredArr = this.state.employeeList.filter(person => {
-      return person.name.first.toLowerCase() == this.state.search.toLowerCase();
+      if(this.state.search.toLowerCase() === person.name.first.toLowerCase()) {
+        return person.name.first.toLowerCase() === this.state.search.toLowerCase();
+      } else {
+        return person.name.last.toLowerCase() === this.state.search.toLowerCase();
+      }
     });
     this.setState({ filteredList: filteredArr })
-
-    const filteredLastNameArr = this.state.employeeList.filter(person => {
-      return person.name.last.toLowerCase() === this.state.search.toLowerCase();
-    });
-    this.setState({ filteredList: filteredLastNameArr })
   };
+
+  sortAZ = event => {
+    let Array_1 = [ "A", "C", "E", "G", "I", "B", "D", "F", "H", "J" ];
+ 
+    Array_1.sort();
+  
+  let Array_2 = Array_1.toString();
+ 
+   return (
+     <View style={styles.MainContainer}>
+ 
+        <Text style={{ fontSize : 20, textAlign: 'center' }} > { Array_2 } </Text>
+ 
+     </View>
+   );
+  }
 
   render() {
     return (
