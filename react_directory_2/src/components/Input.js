@@ -8,7 +8,7 @@ function TextBox(props) {
        <input
        value={props.search}
        onChange={props.handleInputChange}
-       name="employee"
+       name="search"
        list="employees"
        type="text"
        className="form-control"
