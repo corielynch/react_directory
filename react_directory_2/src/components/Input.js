@@ -4,8 +4,14 @@ function TextBox(props) {
   return (
     <div>
       <h1>Employee Directory</h1>
+
+
+      
+      
+
       <form className="search">
         <label htmlFor="employee"></label>
+
 
         <input
           value={props.search}

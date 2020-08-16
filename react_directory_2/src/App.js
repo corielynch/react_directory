@@ -34,7 +34,7 @@ class App extends Component {
     this.setState({ filteredList: filteredArr })
 
     const filteredLastNameArr = this.state.employeeList.filter(person => {
-      return person.name.last.toLowerCase() == this.state.search.toLowerCase();
+      return person.name.last.toLowerCase() === this.state.search.toLowerCase();
     });
     this.setState({ filteredList: filteredLastNameArr })
   };
