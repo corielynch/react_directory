@@ -8,23 +8,27 @@ class App extends Component {
   
     state = {
         employeeList: [], 
+        filteredList: [],
         search: ""
     }
 
     componentDidMount () {
         API.search().then(response => {
-            console.log(response.data.results)
                 this.setState({employeeList: response.data.results})      
+                this.setState({filteredList: response.data.results})      
+
         })
     }
 
     handleInputChange = event => {
-        this.setState({ search: event.target.value });
+        const value = event.target.value;
+        const name = event.target.name;
+        this.setState({ [name]: value });
       };
 
       handleFormSubmit = event => {
         event.preventDefault();
-        API.search(this.state.search)
+        API.getFirstNames(this.state.search)
           .then(res => {
             if (res.data.status === "error") {
               throw new Error(res.data.message);
@@ -34,17 +38,6 @@ class App extends Component {
           .catch(err => this.setState({ error: err.message }));
       };
 
-       SearchResults(props) {
-        return (
-          <ul className="list-group search-results">
-            {props.results.map(result => (
-              <li key={result} className="list-group-item">
-                <img alt="Dog" src={result} className="img-fluid" />
-              </li>
-            ))}
-          </ul>
-        );
-      }
 
 
   render () {
@@ -58,8 +51,7 @@ class App extends Component {
 
          />
         <Table 
-        employeeList={this.state.employeeList}
-        SearchResults={this.SearchResults}
+        employeeList={this.state.filteredList}
 
         />
         

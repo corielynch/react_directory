@@ -6,5 +6,8 @@ const BASEURL = "https://randomuser.me/api/?results=50";
 export default {
   search: function() {
     return axios.get(BASEURL);
+  },
+  getFirstNames: function() {
+    return axios.get("https://randomuser.me/api/?inc=name");
   }
 };
