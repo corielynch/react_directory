@@ -9,6 +9,7 @@ class App extends Component {
   state = {
     employeeList: [],
     filteredList: [],
+    switch: "",
     search: ""
   }
 
@@ -31,27 +32,31 @@ class App extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const filteredArr = this.state.employeeList.filter(person => {
-      if(this.state.search.toLowerCase() === person.name.first.toLowerCase()) {
-        return person.name.first.toLowerCase() === this.state.search.toLowerCase();
-      } else {
-        return person.name.last.toLowerCase() === this.state.search.toLowerCase();
-      }
-    });
-    this.setState({ filteredList: filteredArr })
+    if(this.state.search === "") {
+      this.setState({ filteredList: this.state.employeeList})
+    } else { 
 
+      const filteredArr = this.state.employeeList.filter(person => {
+        if(this.state.search.toLowerCase() === person.name.first.toLowerCase()) {
+          return person.name.first.toLowerCase() === this.state.search.toLowerCase();
+        } else {
+          return person.name.last.toLowerCase() === this.state.search.toLowerCase();
+        }
+      });
+      this.setState({ filteredList: filteredArr })
+    }
   };
   
 
   handleToggle = () => {
-    let listAZ = new Array (...this.state.employeeList) 
-    console.log("THIS IS LISTAZ" + listAZ);
+    let listAZ = new Array (...this.state.filteredList) 
     let sortof = listAZ.sort((a,b) => {
       return (a.name.last > b.name.lasta) ? 1 : ((b.name.last > a.name.last) ? -1 :0)
 
     })
-    console.log(sortof)
-    this.setState({employeeList:sortof})
+
+    
+    this.setState({ filteredList: sortof })
   }
 
 

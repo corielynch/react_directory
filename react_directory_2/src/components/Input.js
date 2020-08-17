@@ -6,10 +6,10 @@ function TextBox(props) {
       <h1>Employee Directory</h1>
 
 
-      <label class="switch">
+      <label className="switch">
         <input 
         type="checkbox"
-        className= "lastName"
+        name= "switch"
         ></input>
         <span class="slider round" onClick={props.handleToggle}></span>
         <p>Sort A-Z</p>
