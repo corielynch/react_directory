@@ -9,7 +9,7 @@ function TextBox(props) {
       <label class="switch">
         <input 
         type="checkbox"
-        name= "isToggleOn"
+        name= "lastName"
         ></input>
         <span class="slider round" onClick={props.handleToggle}></span>
         <p>Sort A-Z</p>

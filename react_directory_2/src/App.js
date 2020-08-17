@@ -9,7 +9,7 @@ class App extends Component {
   state = {
     employeeList: [],
     filteredList: [],
-    isToggleOn: true,
+    lastName: "",
     search: ""
   }
 
@@ -40,24 +40,25 @@ class App extends Component {
       }
     });
     this.setState({ filteredList: filteredArr })
+    console.log(this.state.filteredList)
 
   };
   
-  handleToggle = event => {
-    let listAZ = this.state.employeeList.sort((a,b) => {
-      return a-b
-    })
-    this.setState(state => ({
-      isToggleOn: !state.isToggleOn
-    }))
-  }
-  render() {
 
+  handleToggle = () => {
+    let listAZ = new Array (...employeeList) 
+    console.log("THIS IS LISTAZ" + listAZ);
+    let sortof = listAZ.sort((a,b) => {
+      return (a.lastName > b.lastName) ? 1 : ((b.lastName > a.lastName) ? -1 :0)
+
+    })
+    this.setState({lastName:sortof})
+  }
+
+
+  render() {
     return (
       <>
-      
-        
-
         <TextBox
           handleInputChange={this.handleInputChange}
           employeeList={this.state.employeeList}
