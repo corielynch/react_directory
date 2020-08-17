@@ -9,6 +9,7 @@ class App extends Component {
   state = {
     employeeList: [],
     filteredList: [],
+    isToggleOn: true,
     search: ""
   }
 
@@ -26,6 +27,9 @@ class App extends Component {
     this.setState({ [name]: value });
   };
 
+  
+
+
   handleFormSubmit = event => {
     event.preventDefault();
     const filteredArr = this.state.employeeList.filter(person => {
@@ -36,36 +40,36 @@ class App extends Component {
       }
     });
     this.setState({ filteredList: filteredArr })
+
   };
-
-  sortAZ = event => {
-    let Array_1 = [ "A", "C", "E", "G", "I", "B", "D", "F", "H", "J" ];
- 
-    Array_1.sort();
   
-  let Array_2 = Array_1.toString();
- 
-   return (
-     <View style={styles.MainContainer}>
- 
-        <Text style={{ fontSize : 20, textAlign: 'center' }} > { Array_2 } </Text>
- 
-     </View>
-   );
+  handleToggle = event => {
+    let listAZ = this.state.employeeList.sort((a,b) => {
+      return a-b
+    })
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn
+    }))
   }
-
   render() {
+
     return (
       <>
+      
+        
+
         <TextBox
           handleInputChange={this.handleInputChange}
           employeeList={this.state.employeeList}
           handleFormSubmit={this.handleFormSubmit}
+          handleToggle={this.handleToggle}
+
 
 
         />
         <Table
           employeeList={this.state.filteredList}
+        
 
         />
 
