@@ -9,7 +9,7 @@ function TextBox(props) {
       <label class="switch">
         <input 
         type="checkbox"
-        name= "lastName"
+        className= "lastName"
         ></input>
         <span class="slider round" onClick={props.handleToggle}></span>
         <p>Sort A-Z</p>
@@ -19,8 +19,6 @@ function TextBox(props) {
 
       <form className="search">
         <label htmlFor="employee"></label>
-
-
         <input
           value={props.search}
           onChange={props.handleInputChange}

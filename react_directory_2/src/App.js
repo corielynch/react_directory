@@ -9,7 +9,6 @@ class App extends Component {
   state = {
     employeeList: [],
     filteredList: [],
-    lastName: "",
     search: ""
   }
 
@@ -40,19 +39,19 @@ class App extends Component {
       }
     });
     this.setState({ filteredList: filteredArr })
-    console.log(this.state.filteredList)
 
   };
   
 
   handleToggle = () => {
-    let listAZ = new Array (...employeeList) 
+    let listAZ = new Array (...this.state.employeeList) 
     console.log("THIS IS LISTAZ" + listAZ);
     let sortof = listAZ.sort((a,b) => {
-      return (a.lastName > b.lastName) ? 1 : ((b.lastName > a.lastName) ? -1 :0)
+      return (a.name.last > b.name.lasta) ? 1 : ((b.name.last > a.name.last) ? -1 :0)
 
     })
-    this.setState({lastName:sortof})
+    console.log(sortof)
+    this.setState({employeeList:sortof})
   }
 
 
